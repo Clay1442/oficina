@@ -21,6 +21,9 @@
  $qtdtotal= $qtdoleo + $qtdpneu + $qtdvela;
  echo "<p> Quantidade de itens solicitados ". $qtdtotal. "</p>";
  $valortotal= 0.00;
+ ?>
+ <h3></h3>
+ <?php
  //definindo constantes//
  define('PRECOPNEU', 100);
  define('PRECOOLEO', 10);
@@ -30,7 +33,7 @@
  //trabalhando com o if
  if ($qtdtotal == 0) {echo '<p style="color:red">';
      echo "Faça a sua solicitação preenchendo os itens da página anterior";
-     echo "</p>";
+     echo "</p>";   
  } else {
  if ($qtdoleo > 0)
      echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
@@ -39,25 +42,27 @@
  if ($qtdvela > 0)
      echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";}
 
- if ($qtdpneu < 10) {
-     $desconto = 0;
-    } elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
-        $desconto= 5;
-      } elseif (($qtdpneu >=50) && ($qtdpneu <=99)){
-          $desconto = 10;
-        } elseif ($qtdpneu >=100) {
-            $desconto = 15 ;
-      }
- $resultadooleo=$qtdoleo * PRECOOLEO;
- $resultadopneu=$qtdpneu * PRECOPNEU;
- $resultadovela= $qtdvela * PRECOVELA;
- $valortotal= $qtdoleo +  $resultadopneu+ $resultadovela;
- echo "<p>Subtotal:R$". number_format($valortotal, 2). "</p>";
- //calculo do desconto do pneu
-      echo "<p> Desconto do pneu: ".$desconto. "% </p>";
+    $resultadooleo=$qtdoleo * PRECOOLEO;
+    $resultadopneu=$qtdpneu * PRECOPNEU;
+    $resultadovela= $qtdvela * PRECOVELA;
+    $valortotal= $resultadooleo +  $resultadopneu + $resultadovela;
+    echo "<p>Subtotal (sem desconto e sem imposto):R$". number_format($valortotal, 2). "</p>";
+    
+    //calculo do desconto do pneu
+    if ($qtdpneu < 10) {
+        $desconto = 0;
+       } elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
+           $desconto= 5;
+         } elseif (($qtdpneu >=50) && ($qtdpneu <=99)){
+             $desconto = 10;
+           } elseif ($qtdpneu >=100) {
+               $desconto = 15 ;
+         }
+
+    echo "<p> Desconto do pneu: ".$desconto. "% </p>";
       $descontopneu = $resultadopneu * ($desconto/100);
       $pneucomdesconto = $resultadopneu - $desconto;
-
+  echo "valor com o desconto do pneu:R$".$pneucomdesconto. "</p>";
 $valortotal= $qtdoleo +  $pneucomdesconto + $resultadovela;
       $taxa = 0.10; //local sales tax is 10%
  $totalcomimposto = $valortotal * (1 + $taxa);   
@@ -82,7 +87,8 @@ switch ($cliente) {
     default:
     echo "Cliente nao informou de onde veio</p>";
 }
-     echo "Seu desconto nos pneus sera de $desconto % </p>";
+
+
  ?>
 <a href="http://localhost/oficina/index.php">Voltar</a>
 </body>
