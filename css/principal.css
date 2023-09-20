@@ -22,3 +22,15 @@ input[type="number"] {
    background-color: blue;
  }
  
+ label.form-label {
+    font-size: 1.2em;
+    font-variant: all-small-caps;
+   font-weight: bolder;
+ }  
+
+ input[type="submit"] {
+    background-color: #ccc;
+ }
+ button.btn.btn-outline-success.my-2.my-sm-0 {
+    background-color: #ccc;
+}

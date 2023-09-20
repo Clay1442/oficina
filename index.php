@@ -9,76 +9,65 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   </head>
 <body>
-<header class="fixed-top">
-    <div class="px-3 py-2 text-bg-dark border-bottom">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-          </a>
-
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="#" class="nav-link text-secondary">
-                <i class="bi-house d-block mx-auto mb-1" width="24" height="24"></i></svg>
-                Home
-              </a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-black">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page">Início <span class="visually-hidden">(current)</span></a>
             </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="bi bi-speedometer2 d-block mx-auto mb-1" width="24" height="24"></i>
-                Dashboard
-              </a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
             </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="bi-table d-block mx-auto mb-1" width="24" height="24"></i>
-                Orders
-              </a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Action 1</a>
+                    <a class="dropdown-item" href="#">Action 2</a>
+                </div>
             </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="bi-grid d-block mx-auto mb-1" width="24" height="24"></i>
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="bi-person d-block mx-auto mb-1" width="24" height="24"></i>
-                Customers
-              </a>
-            </li>
-          </ul>
-  </header>
-
-  <h1>Sistema Pedidos</h1>
-    <form action="pedido.php" method="post">
-        <table>
-            <th>itens</th>
-            <th>Quantidade</th>
-         <tr>
-            <td>Óleo</td>
-             <td><input type="number" name="qtdoleo" id="qtdoleo" min="0" max="200" value="10"></td>
-        </tr>
-       <tr>
-        <td>Pneu</td>
-             <td><input type="number" name="qtdpneu" id="qtdpneu" min="0" max="200" value="10"></td>
-        </tr>
-        <tr>
-        <td>Vela</td>
-             <td><input type="number" name="qtdvela" id="qtdvela" min="0" max="200" value="10"></td>
-            </tr>
-            <td>Como você nos achou</td>
-             <td><select name="cliente" id="cliente">
-                <option value="a">Um cliente costumeiro</option>
-                <option value="b">Televisão</option>
-                <option value="c">Telefone</option>
-                <option value="d">Boca a boca</option>
-             </select></td>
- 
-</table>
-<input type="submit" value="Enviar">
-</form>
+        </ul>
+        <form class="d-flex my-2 my-lg-0">
+            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-3 my-sm-0 " type="submit ">Pesquisar </button>
+        </form>
+    </div>
+</nav>
+   
+        <main class="mx-auto p-4" style="width:800px">  
+   <section class="container text-center"><h1>Sistema pedidos</h1></section>
+     <h1>Informe itens e quantidades</h1>
+      <form action="pedido.php" method="post">
+       <div class="mb-3">
+         <label for="qtdoleo" class="form-label">Quantidade de Óleo</label>
+         <input type="number" min="0" max="200" value="10"
+           class="form-control" name="qtdoleo" id="qtdoleo" aria-describedby="helpId" placeholder="">
+       </div>   
+       <div class="mb-3">
+         <label for="qtdpneu" class="form-label">Quantidade de Pneu</label>
+         <input type="number" min="0" max="200" value="10"
+           class="form-control" name="qtdpneu" id="qtdpneu" aria-describedby="helpId" placeholder="">
+       </div>  
+       <div class="mb-3">
+         <label for="qtdvela" class="form-label">Quantidade de Vela</label>
+         <input type="number" min="0" max="200" value="10"   
+           class="form-control" name="qtdvela" id="qtdvela" aria-describedby="helpId" placeholder="">
+       </div>    
+       <div class="mb-3">
+        <label for="cliente" class="form-label">Onde nos achou?</label>
+        <select class="form-select form-select-lg" name="cliente" id="cliente">
+          <option selected>Selecione uma opção</option>
+          <option value="a">Um cliente costumeiro</option>
+          <option value="b">Televisão</option>
+          <option value="c">Telefone</option>
+          <option value="d">Boca a boca</option>
+        </select>
+       </div>       
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form></main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>
